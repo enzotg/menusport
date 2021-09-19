@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./carouseld/carouseld.css">
+    <script src="./carouseld/carouseld.js"></script>
+    <title>Sport-X</title>
+
+    <style>
+        
+        ::-webkit-scrollbar {
+            width: 2px;
+            height: 4px;
+        }
+
+        ::-webkit-scrollbar-button{
+            width: 16px;
+            background-color: rgb(236, 236, 238);
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: rgb(116, 117, 122);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgb(31, 35, 46);
+        }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }        
+
+        body{            
+            font-family: 'Nunito', 'Lucida Sans', Arial, sans-serif;
+            font-weight: 300; 
+            margin: 0;           
+            padding: 0;
+            xbackground-color: linear-gradient(to bottom right,rgba(0,0,0,.98) 60%, rgba(255, 254, 254, .6) 100% );
+            background-color: black;
+            background: linear-gradient(to bottom right,rgba(0,0,0,.99) 60%, rgba(255, 254, 254, .1) 140% );
+            position: relative;            
+        }
+        /* Menu */
+        .top-nav{                                   
+            color:white;     
+            background-color: transparent;            
+            width: 100%;            
+            display: flex;
+            align-items: baseline;
+            flex-wrap: nowrap;
+            line-height: 3rem;            
+            position: relative;                        
+            z-index: 1;
+        }        
+        .top-nav ul{
+            height: 100%;
+            display: inline-flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;            
+            margin-left: 24px;            
+        }
+        .top-nav ul li{                                                
+            height: 100%;            
+            width: 6rem;
+            text-align: center;
+            position: relative;
+        }
+        .top-nav ul li:hover{                        
+            background-color:  white;
+            color: black;            
+            transition: .2s linear all;            
+        }        
+        .top-nav ul li a:hover{            
+            background-color:  white;
+            color: black;
+        }
+        .top-brand {            
+            padding-right: 8px ;                                    
+        }
+        .top-brand-texto{           
+            font-size: 1.1rem;
+            line-height: 2rem;
+            display: inline-block;
+            border-radius: 4px;            
+            background-color: rgba(245, 158, 142,.01);
+            padding: 0 8px;            
+            color: burlywood;
+        }
+        .dropdown{            
+            margin: 0;
+            padding: 0;
+            height: 100%;           
+            width: 100%;            
+        }
+        .dropdown-btn{                   
+            height: 3rem;                
+            width: 100%;            
+            color: inherit;
+            border: none;
+            font-family: inherit;            
+            font-size: inherit;
+            background-color: inherit;
+            text-align: inherit;                        
+        }
+        .menu-btn{
+            height: 3rem;                
+            width: 100%;            
+            color: inherit;
+            border: none;
+            font-family: inherit;            
+            font-size: inherit;
+            background-color: inherit;
+            text-align: inherit;      
+        }
+        .dropdown-btn-inner{
+            display: inline-flex;
+        }
+        .dropdown-content {            
+            max-height: 0;
+            position: absolute;
+            background-color: black;
+            color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
+            z-index: 1;
+            opacity: 0.3;
+            transition: all .3s ease-in-out;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            text-decoration: none;            
+            text-align: left;            
+            color: inherit;                   
+            width: 100%;            
+            display: block;
+            padding-left: 8px;
+            line-height: 2.4rem;
+        }        
+        .dropdown-content-display {                          
+            max-height: 500px;
+            position: absolute;            
+            opacity: 1;
+        }
+        .top-nav-icon{
+            xmargin: 4px 0;
+            color:  white;     
+            font-size:1.8rem;
+            text-decoration: none;                        
+            height: 80%;
+            border-radius: 4px;
+            padding: 2px ;
+            position: absolute;                        
+            right: 16px;            
+            display: none;            
+        }        
+        .triangle {            
+            width: 0; 
+            height: 0; 
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid rgb(185, 184, 184);
+            margin:auto;
+            margin-left: 6px;
+        }
+        .top-nav-fondo{
+            width: 100%;
+            position: absolute;top:0;left: 0;
+            height: 60px;
+            background-image: linear-gradient(to bottom,black , rgba(0,0,0,0) 80%);     
+        }
+        @media screen and (max-width: 576px) {
+            .top-nav{
+                flex-direction: column;                
+                align-items: unset;
+            }
+            .top-nav ul{
+                margin: 0;
+            }
+            .top-nav ul li{
+                text-align: left;
+                padding: 0px ;              
+                width: 100%;                
+            }            
+            .nav-collapse{
+                background-color: rgba(255, 255, 255, 0.7);
+                color: black;
+                max-height: 0px;
+                overflow: hidden;                
+                height: 100%;
+                transition: all ease-in-out .3s;
+            }
+            .nav-collapse ul{
+                display: list-item;
+            }
+            .dropdown-content{
+                position: relative !important;                
+                margin-left: 0px;            
+            }            
+            .top-nav .dropdown  {
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+            .top-nav-icon {
+                display: block;
+            }
+        }  
+        .show{            
+            max-height: 500px;            
+        }
+        /* Fin Menu */
+
+        .btn-prim{            
+            border: 1px solid white;
+            color: white;
+            background-color: black;
+            width: 10rem;
+            padding: 1rem;
+            margin:auto;            
+            font-size: 1.1rem;
+            cursor: pointer;
+            min-width: 10rem;
+        }
+        .btn-prim-b{     /*no border, no back*/       
+            border: none;
+            border-bottom: 1px solid white;
+            background: radial-gradient(rgba(222, 184, 135, 0.2), transparent);            
+            color: white;            
+            width: 10rem;
+            padding: 1rem;
+            margin:auto;            
+            font-size: 1.1rem;
+            cursor: pointer;
+            min-width: 10rem;
+        }        
+        .btn-prim a {
+            text-decoration: none;
+            color: white;
+        }
+        .btn-prim:hover, .btn-prim-b:hover{
+            text-shadow:   0 0 2px white;
+        }
+        .contenedor-sub-a{
+            text-align: center;
+            padding: 16px;            
+        }
+        .contenedor-marcas{
+            display: flex;
+            justify-content: space-between;
+            overflow: auto;
+            padding: .1rem 0 ;
+            background: white;    
+            transition: all .4s linear;
+            height: 90px;
+        }
+        .contenedor-deportes{
+            display: flex;            
+            flex-wrap: wrap;
+            overflow-y: scroll;
+            padding: .1rem 0 ;
+            background: white;    
+            transition: all .4s linear;
+            height: 90px;
+            max-height: 0;
+            
+        }
+        .cont-marca-img{
+            flex:1 0 100px;
+            padding: 8px;
+            border: 4px solid black;
+            background-color: white;            
+        }
+        .cont-deporte-item{
+            text-align: center; 
+            flex:1 1 40px;border:1px solid gray;background-color:rgba(0,0,0,.6);padding: 1rem;
+        }
+        .cont-deporte-img-item{
+            position: relative;
+            padding: 0 0 5rem 0;
+            border: 2px solid white;
+            border-width: 4px 0;
+        }
+        
+
+        .cont-generos{
+            display: flex;
+            flex-flow: row wrap;            
+            width: 100%;
+        }
+        .cont-generos-item:first-child {
+            border-left:none;
+        }
+        .cont-generos-item:last-child{
+            border-right:none;
+        }
+
+        .cont-generos-item{
+            flex:1 1 25%;
+            min-width: 300px;
+            position: relative;
+            border: 1px solid black;
+        }
+        
+        @media only screen and (min-width: 810px) and (max-width: 1210px){
+            .cont-generos-item{
+                flex-basis:  50%;                
+            }
+        }        
+
+        .imagen{
+            object-fit: cover; 
+            width: 100%;
+            height: 100%;
+        }
+        .zocalo-texto-inf{
+            position:absolute;
+            left:0;
+            bottom:0%;
+            font-size: 1.2rem;
+            background-color:rgba(0,0,0,.6);
+            width: 100%;
+            text-align: center;
+            line-height: 5rem;
+            color: white;                
+        }
+        .no-back{
+            background: none;
+        }
+        .separador-1{
+            height: 30px;
+            margin-top: -6px;        
+            width: 100%;                
+        }
+        header{
+            position: absolute;
+            top:0;
+            width: 100%;
+        }
+        footer{
+            height: 120px;
+            margin-top: -120px ;
+            width: 100%;
+            font-size: .8rem;
+        }
+        .footer-inner{
+            background-color: rgb(20, 19, 19); 
+            color: rgb(212, 200, 200);
+            padding: 1.6rem;
+            line-height: 1.4rem;
+        }
+        .texto-cuadro-br{
+            font-size:4rem;
+            padding: 8px;
+            color: white;
+            border: 1px solid white;
+            text-shadow:0px 0px 4px      silver ;
+            box-shadow: 0px 0px 20px 0px white ;
+            margin: 32px;
+        }
+        .efecto-hueco{        
+            background:
+                linear-gradient(30deg, rgb(235, 73, 9) 0%, rgba(175, 134, 21, 1) 20%,
+                rgb(160, 108, 4) 50%, rgb(223, 166, 9) 72%, rgb(240, 232, 127) 100%);
+            color: transparent;                
+            -moz-background-clip: text;
+            -webkit-background-clip: text;        
+        
+        }
+        .back-grad-color-a{
+            background:
+                linear-gradient(30deg, rgb(235, 73, 9) 0%, rgba(175, 134, 21, 0.986) 21%,
+                rgba(105, 72, 5, 0.9) 46%, rgb(223, 166, 9) 72%, rgb(165, 96, 7) 100%);
+
+        }
+        .titulo-a{
+            font-size: 4rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;            
+            font-weight: 600;       
+        }
+        .titulo-centro{
+            margin:1rem  0 ;        
+            height:7rem;
+            text-align: center;
+        }
+        .titulo-b{
+            font-size: 2rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;            
+            font-weight: 600;       
+            line-height: 4rem;
+            text-align: center;
+            color: burlywood;
+        }        
+        /*producto************************************/
+        .producto-item {
+            padding: 6px;
+            padding-bottom: 0;
+            margin: 4px;
+            overflow: hidden;
+            background-color: white;
+            position: relative;
+            color:black;
+            display: flex;
+            flex-flow: column nowrap;
+        }        
+        .producto-pa{
+            flex: 1 1 200px; 
+        }
+        .producto-pb{
+            flex: 1 1 30px;   
+        }
+        .producto-pc{
+            flex: 1 1 30px;   
+        }
+        .producto-pd{
+            flex: 1 1 80px;   
+            overflow: hidden;
+        }
+        .producto-imagen {            
+            width: 100%;
+            max-height: 50vh;
+            margin: auto;
+            xdisplay: block;
+            object-fit: contain;
+        }
+        .producto-marca {
+            font-size: 1rem;            
+            font-weight: 500;            
+        }
+        .producto-marca-img {
+            height: 40px;
+            width:40px;
+            object-fit: scale-down;            
+        }
+        
+        .producto-precio{
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .producto-descr {
+            font-size: .9rem;            
+        }
+        /* transitions */
+        .trans-to-left{
+            transform: translateX(-100%);
+            opacity: 0;
+            
+        }
+        .trans-to-zero{
+            transform: translateX(0);
+            opacity: 1;
+            transition: .6s linear all;
+        }
+        /*****************************************/
+
+
+    </style>
+</head>
+<body >
+        
+    <div >
+        <div class="top-nav-fondo">
+        </div>
+        
+        <img src="./fondo.jpg" style="object-fit: cover;width: 100%;max-height: 500px;" alt="">
+
+        <header >
+            <nav class="top-nav">
+                <div class="top-brand">
+                    <div class="top-brand-texto">
+                        <span>Sports-X</span>                    
+                    </div>
+                </div>        
+                <a href="#" class="top-nav-icon" >
+                    &#9776;
+                </a>        
+                <div class="nav-collapse" >
+                    <ul>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropdown-btn">
+                                    <div class="dropdown-btn-inner" >
+                                        Hombre
+                                        <p class="triangle"></p>
+                                    </div>                            
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Calzado</a>
+                                    <a href="#">Indumentaria</a>
+                                    <a href="#">Accesorios</a>
+                                </div>
+                              </div> 
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropdown-btn">
+                                    <div class="dropdown-btn-inner" >
+                                        Mujer
+                                        <p class="triangle"></p></div>                            
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Calzado</a>
+                                    <a href="#">Indumentaria</a>
+                                    <a href="#">Accesorios</a>                                </div>
+                                </div> 
+                        </li>
+                        <li>
+                            <button class="menu-btn">
+                                Contacto
+                            </button>
+                        </li>                
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    
+
+    <div class="separador-1">
+    </div>
+
+    <div class="contenedor-sub-a">
+        <button class="btn-prim" >
+            <a href="#ofertas">Ir a ofertas</a>            
+        </button>
+    </div>
+    <hr>    
+    <div class="contenedor-sub-a" >
+        <button class="btn-prim">
+            Marcas
+        </button>
+    </div>  
+
+    <div class="contenedor-sub-a">
+        <div class="contenedor-marcas" >
+            <div class="cont-marca-img"><img src="./ADIDAS_LogosWEBSPG_85x53.png" alt=""></div>
+            <div class="cont-marca-img"><img src="./FILA_LogosWEBSPG_85x53.png" alt=""></div>
+            <div class="cont-marca-img"><img src="./nike_LogosWEBSPG_85x53.png" alt=""></div>
+            <div class="cont-marca-img"><img src="./oakley_LogosWEBSPG_85x53.png" alt=""></div>
+            <div class="cont-marca-img"><img src="./puma_LogosWEBSPG_85x53.png" alt=""></div>
+            <div class="cont-marca-img"><img src="./reebok_LogosWEBSPG_85x53.png" alt=""></div>
+        </div>        
+    </div>
+
+    <hr>
+
+    <div class="cont-generos" >
+        <div class="cont-generos-item">
+            <img src="./mujer.jpg" class="imagen"   alt="">
+            <span class="zocalo-texto-inf" >                    
+                <button class="btn-prim">
+                    Mujer
+                </button>
+            </span>
+        </div>
+        <div class="cont-generos-item">
+            <img src="./varon.jpg" class="imagen" alt="">                
+            <span class="zocalo-texto-inf" >
+            <button class="btn-prim">
+                Hombre
+            </button></span>
+        </div>
+        <div class="cont-generos-item">
+            <img src="./niño.jpeg" class="imagen" alt="">                
+            <span class="zocalo-texto-inf" >
+            <button class="btn-prim">
+                Niños
+            </button></span>
+        </div>
+        <div class="cont-generos-item">
+            <img src="./accesorio.jpg" class="imagen" alt="">                
+            <span class="zocalo-texto-inf" >
+            <button class="btn-prim">
+                Accesorios
+            </button></span>
+        </div>        
+    </div>
+    
+    <hr>
+    <div class="titulo-centro">         
+    </div>
+    <div class="cont-generos-item">
+        <img src="./prop1.jpg" class="imagen" alt="">                
+        <span class="zocalo-texto-inf" >
+            <button class="btn-prim">
+                Lanzamiento
+            </button>
+        </span>
+    </div>
+    <div class="titulo-centro">         
+    </div>
+    <div class="cont-generos-item">
+        <img src="./prop2.jpg" class="imagen" alt="">                
+        <span class="zocalo-texto-inf"  >
+            <button class="btn-prim ">
+                Comprar
+            </button>
+        </span>
+    </div>
+
+    <div id="ofertas" class="titulo-centro">
+        <span class="titulo-a efecto-hueco   "> 
+            Ofertas
+        </span>       
+    </div>
+
+    <div id="contcarouseld1" class="contcarouseld">
+        <a href="javascript:void(0)"  class="contcarouseld-control-ant" id="contcarouseld-Ant" onclick="carouseldAnterior(this)">
+            <span>&#10094;</span>
+        </a>
+        <a href="javascript:void(0)" class="contcarouseld-control-sig" id="contcarouseld-Sig" onclick="carouseldSiguiente(this)">
+            <span>&#10095;</span>
+        </a>
+    
+        <div id="carouseld-inner" class="carouseld-inner">
+            <div class="carouseld-item" data-id="1">                
+                <div class="producto-item">
+                    <div class="producto-pa">
+                        <a>
+                            <img src="./carouseld/rem1.jpg" alt="" class="producto-imagen">
+                        </a>              
+                        <hr>
+                    </div>  
+                    <div class="producto-pb" >                        
+                        <img src="./puma_LogosWEBSPG_85x53.png" class="producto-marca-img" alt="">                        
+                    </div>
+                    <div class="producto-pc" >              
+                        <span class="producto-precio" >
+                            $ 6499,99
+                        </span>
+                        
+                    </div>
+                    <div class="producto-pd" >              
+                        <p class="producto-descr">                        
+                            Remera Puma Manchester City temporada 2020 entrenamiento                        
+                        </p>
+                    </div>                                  
+                </div>
+            </div>
+            <div class="carouseld-item" data-id="2">                
+                <div class="producto-item">
+                    <div class="producto-pa">
+                        <a>
+                            <img src="./carouseld/rem2.jpg" alt="" class="producto-imagen">
+                        </a>              
+                        <hr>
+                    </div>  
+                    <div class="producto-pb">
+                        <img src="./puma_LogosWEBSPG_85x53.png" class="producto-marca-img" alt="">
+                    </div>
+                    <div class="producto-pc">              
+                        <span class="producto-precio" >
+                            $ 6499,99
+                        </span>
+                        
+                    </div>
+                    <div class="producto-pd" >              
+                        <p class="producto-descr">                        
+                            Remera Puma 
+                        </p>
+                    </div>                                  
+                </div>
+            </div>
+            <div class="carouseld-item" data-id="3">                
+                <div class="producto-item">
+                    <div class="producto-pa">
+                        <a>
+                            <img src="./carouseld/rem3.jpg" alt="" class="producto-imagen">
+                        </a>              
+                        <hr>
+                    </div>  
+                    <div class="producto-pb">
+                        <img src="./nike_LogosWEBSPG_85x53.png" class="producto-marca-img" alt="">
+                    </div>
+                    <div class="producto-pc">              
+                        <span class="producto-precio" >
+                            $ 6499,99
+                        </span>
+                        
+                    </div>
+                    <div class="producto-pd" >              
+                        <p class="producto-descr">                        
+                            Remera Puma Manchester City temporada 2020 entrenamiento                        
+                        </p>
+                    </div>                                  
+                </div>
+            </div>
+            <div class="carouseld-item" data-id="4">                
+                <div class="producto-item">
+                    <div class="producto-pa">
+                        <a>
+                            <img src="./carouseld/rem4.jpg" alt="" class="producto-imagen">
+                        </a>              
+                        <hr>
+                    </div>  
+                    <div class="producto-pb">
+                        <img src="./reebok_LogosWEBSPG_85x53.png" class="producto-marca-img" alt="">
+                    </div>
+                    <div class="producto-pc">              
+                        <span class="producto-precio" >
+                            $ 6499,99
+                        </span>
+                        
+                    </div>
+                    <div class="producto-pd" >              
+                        <p class="producto-descr">                        
+                            Remera Puma Manchester City temporada 2020 entrenamiento                        
+                        </p>
+                    </div>                                  
+                </div>
+            </div>                                    
+        </div>
+    </div>
+    
+    <div class="titulo-centro">        
+        <button class="btn-prim">
+            Mas ofertas
+        </button>
+    </div>
+    <hr>
+    <div class="titulo-centro">
+        <span class="titulo-a efecto-hueco">Deportes</span>
+    </div>
+    
+
+    <div id="contcarouseld2" class="contcarouseld">
+        <a href="javascript:void(0)"  class="contcarouseld-control-ant" id="contcarouseld-Ant" onclick="carouseldAnterior(this)">
+            <span>&#10094;</span>
+        </a>
+        <a href="javascript:void(0)" class="contcarouseld-control-sig" id="contcarouseld-Sig" onclick="carouseldSiguiente(this)">
+            <span>&#10095;</span>
+        </a>
+    
+        <div id="carouseld-inner" class="carouseld-inner">
+            <div class="carouseld-item" data-id="1">                
+                <div class="cont-deporte-img-item back-grad-color-a" >
+                    <img src="./dep_basket2.jpg" class="imagen" alt="">
+                    <div class="zocalo-texto-inf no-back" >
+                        <button class="btn-prim-b" >
+                            Basket
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="carouseld-item" data-id="2">                
+                <div class="cont-deporte-img-item back-grad-color-a">
+                    <img src="./dep_futbol2.jpg" class="imagen" alt="">
+                    <div class="zocalo-texto-inf no-back" >
+                        <button class="btn-prim-b" >
+                            Futbol
+                        </button>
+                    </div>
+                </div>     
+            </div>
+            <div class="carouseld-item" data-id="3">                
+                <div class="cont-deporte-img-item back-grad-color-a">
+                    <img src="./dep_rugby2.jpg" class="imagen" alt="">
+                    <div class="zocalo-texto-inf no-back" >
+                        <button class="btn-prim-b" >
+                            Rugby
+                        </button>
+                    </div>
+                </div>                 
+            </div>
+            <div class="carouseld-item" data-id="4">                
+                <div class="cont-deporte-img-item back-grad-color-a">
+                    <img src="./dep_running2.jpg" class="imagen" alt="">
+                    <div class="zocalo-texto-inf no-back" >
+                        <button class="btn-prim-b" >
+                            Running
+                        </button>
+                    </div>
+                </div>
+            </div>                                    
+        </div>
+    </div>
+
+    </div>
+
+    <style> 
+
+        .titulo-b:hover + .contenedor-deportes , .contenedor-deportes:hover{            
+            max-height: 500px;
+            transition: .5s ease all;
+        }
+        
+    </style>
+    <div>
+        <div class="titulo-b">
+            <span >Mas deportes</span>            
+        </div>
+        <div id="cont-deportes2" class="contenedor-deportes"  >
+
+            <div class="cont-deporte-item">
+                <button class="btn-prim-b back-grad-color-a" >
+                    Cliclismo
+                </button>
+            </div>
+            <div class="cont-deporte-item">
+                <button class="btn-prim-b back-grad-color-a" >
+                    Atletismo
+                </button>
+            </div>
+            <div class="cont-deporte-item">
+                <button class="btn-prim-b back-grad-color-a" >
+                    Natacion
+                </button>
+            </div>        
+            <div class="cont-deporte-item">
+                <button class="btn-prim-b back-grad-color-a" >
+                    Voley
+                </button>
+            </div>       
+            <div class="cont-deporte-item">
+                <button class="btn-prim-b back-grad-color-a" >
+                    Handball
+                </button>
+            </div>       
+        </div>
+    </div>
+
+
+    
+    <div style="margin-top: 120px;display: block;"></div>
+
+    <footer >
+        <div class="footer-inner">
+            <div>
+                <span>Direccion</span>
+            </div>        
+            <div>
+                <span>Telefono</span>
+            </div>
+            <div>
+                <span>Acerca de</span>
+            </div>    
+            <div>
+                <span>Terminos y condiciones</span>
+            </div>    
+            <div >
+                Todos los derechos reservados
+            </div>
+        </div>
+    </footer>   
+
+</body>
+</html>
+
+
+
+<script>
+
+    window.onload = window_onload;
+
+    function window_onload(){
+
+        dropEvC();
+        dropEvF();
+
+        let elems = document.querySelectorAll(".contenedor-sub-a");
+        elems.forEach(function(value, index){
+            value.classList += " trans-to-left";
+            setTimeout(() => {
+                value.classList += " trans-to-zero";    
+            }, 300 + (index * 500));
+            
+        });
+
+    }
+
+    function dropEvC(){
+        let btns = document.querySelectorAll(".dropdown-btn");
+        btns.forEach(function(value, key){
+            value.addEventListener(
+                "click", function(){                    
+                    value.nextElementSibling.classList.toggle("dropdown-content-display");    
+                });
+        });
+    }
+    function dropEvF(){
+        let btns = document.querySelectorAll(".dropdown-btn");
+        btns.forEach(function(value, key){
+            value.addEventListener(
+                "focusout", function(){                    
+                    value.nextElementSibling.classList.remove("dropdown-content-display");    
+                    //value.nextElementSibling.classList.toggle("dropdown-content-display");    
+                });
+        });
+    }
+    document.querySelector(".top-nav-icon").addEventListener(
+         "click", function(){
+
+            let drop = document.querySelector(".nav-collapse");
+            if(drop.classList.contains("show"))
+                drop.classList.remove("show");
+            else
+                drop.classList += " show";
+
+         }
+    );
+
+    //--------
+    function verTodosDep(){
+        let elem = document.getElementById("cont-deportes");
+        elem.style.flexWrap = "wrap";
+        elem.style.height = "200px";
+        //elem.style.maxHeight = "1000px";
+        
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

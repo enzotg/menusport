@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="./carouseld.css">
+    <script src="./carouseld.js"></script>    
+
+</head>
+<body style="margin:0;padding:0;box-sizing: border-box;">
+<div>
+    <div id="contcarouseld" class="contcarouseld">
+        <a href="#contcarouseld"  class="contcarouseld-control-ant" id="contcarouseld-Ant" onclick="carouseldAnterior()">
+            <span>&#10094;</span>
+        </a>
+        <a href="#contcarouseld" class="contcarouseld-control-sig" id="contcarouseld-Sig" onclick="carouseldSiguiente()">
+            <span>&#10095;</span>
+        </a>
+    
+        <div id="carouseld-inner" class="carouseld-inner">
+            <div class="carouseld-item" data-id="1"><h1>1</h1><img src="./rem1.jpg" style="width: 100%;"/> </div>
+            <div class="carouseld-item" data-id="2"><h1>2</h1><img src="./rem2.jpg" style="width: 100%;"/> </div>
+            <div class="carouseld-item" data-id="3"><h1>3</h1><img src="./rem3.jpg" style="width: 100%;"/> </div>
+            <div class="carouseld-item" data-id="4"><h1>4</h1><img src="./rem4.jpg" style="width: 100%;"/> </div>
+            
+            
+        </div>
+    </div>    
+</div>
+</body>
+</html>

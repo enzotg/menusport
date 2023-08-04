@@ -9,24 +9,75 @@
     <title>Sport-X</title>
 
     <style>
+    :root {
+        --blue: #007bff;
+        --indigo: #6610f2;
+        --purple: #6f42c1;
+        --pink: #e83e8c;
+        --red: #dc3545;
+        --orange: #fd7e14;
+        --yellow: #ffc107;
+        --green: #28a745;
+        --teal: #20c997;
+        --cyan: #17a2b8;
+        --white: #fff;
+        --gray: #6c757d;
+        --gray-dark: #343a40;
+
+        --text-color1 : #fff;
+        --text-color2 : burlywood;
+        --text-color-brand : burlywood;
+
+        --primary: #000;
+        --secondary: #6c757d;
+
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --light: #f8f9fa;
+        --dark: #343a40;
+
+        --dorado1:rgba(222, 184, 135, 0.2);
+
+        --breakpoint-xs: 0;
+        --breakpoint-sm: 576px;
+        --breakpoint-md: 768px;
+        --breakpoint-lg: 992px;
+        --breakpoint-xl: 1200px;
+        --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    
+        --efectoh1: rgb(235, 73, 9);
+        --efectoh2: rgba(175, 134, 21, 1);
+        --efectoh3: rgb(160, 108, 4);
+        --efectoh4: rgb(223, 166, 9);
+        --efectoh5: rgb(240, 232, 127);
+        --efectog1: rgb(235, 73, 9);
+        --efectog2: rgba(175, 134, 21, 0.98);
+        --efectog3: rgba(105, 72, 5, 0.9);
+        --efectog4: rgb(223, 166, 9);
+        --efectog5: rgb(165, 96, 7);    
+    }
+
         
         ::-webkit-scrollbar {
-            width: 2px;
+            width: 4px;
             height: 4px;
         }
 
         ::-webkit-scrollbar-button{
-            width: 16px;
-            background-color: rgb(236, 236, 238);
+            width: 16px;            
         }
 
         ::-webkit-scrollbar-track {
-            background-color: rgb(116, 117, 122);
+            background-color: var(--gray);
         }
 
         ::-webkit-scrollbar-thumb {
-            background-color: rgb(31, 35, 46);
+            background-color: var(--gray-dark);
         }
+
         *,
         *::before,
         *::after {
@@ -38,21 +89,17 @@
             font-weight: 300; 
             margin: 0;           
             padding: 0;
-            xbackground-color: linear-gradient(to bottom right,rgba(0,0,0,.98) 60%, rgba(255, 254, 254, .6) 100% );
-            background-color: black;
-            background: linear-gradient(to bottom right,rgba(0,0,0,.99) 60%, rgba(255, 254, 254, .1) 140% );
+            background: linear-gradient(to bottom right,var(--primary) 60%, var(--light) 140% );
             position: relative;            
         }
         /* Menu */
         .top-nav{                                   
-            color:white;     
-            background-color: transparent;            
+            color: var(--text-color1);                 
             width: 100%;            
             display: flex;
             align-items: baseline;
             flex-wrap: nowrap;
             line-height: 3rem;            
-            position: relative;                        
             z-index: 1;
         }        
         .top-nav ul{
@@ -70,13 +117,13 @@
             position: relative;
         }
         .top-nav ul li:hover{                        
-            background-color:  white;
-            color: black;            
+            background-color: var(--light);
+            color: var(--primary);            
             transition: .2s linear all;            
         }        
         .top-nav ul li a:hover{            
-            background-color:  white;
-            color: black;
+            background-color: var(--light);
+            color: var(--primary);
         }
         .top-brand {            
             padding-right: 8px ;                                    
@@ -86,9 +133,15 @@
             line-height: 2rem;
             display: inline-block;
             border-radius: 4px;            
-            background-color: rgba(245, 158, 142,.01);
             padding: 0 8px;            
-            color: burlywood;
+            color: var(--text-color2);
+        }
+        .top-brand-texto a {
+            text-decoration: none;
+            color: var(--text-color-brand);
+        }
+        .top-brand-texto a:hover{            
+            text-shadow: 0px 0px 2px silver;
         }
         .dropdown{            
             margin: 0;
@@ -122,10 +175,10 @@
         .dropdown-content {            
             max-height: 0;
             position: absolute;
-            background-color: black;
-            color: white;
+            background-color: var(--primary);
+            color: var(--light);
             min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
+            box-shadow: 0px 8px 16px 0px var(--primary);
             z-index: 1;
             opacity: 0.3;
             transition: all .3s ease-in-out;
@@ -145,15 +198,13 @@
             position: absolute;            
             opacity: 1;
         }
-        .top-nav-icon{
-            xmargin: 4px 0;
-            color:  white;     
+        .top-nav-icon{            
+            color:  var(--text-color1);     
             font-size:1.8rem;
-            text-decoration: none;                        
-            height: 80%;
+            text-decoration: none;                                    
             border-radius: 4px;
             padding: 2px ;
-            position: absolute;                        
+            position: absolute;                                   
             right: 16px;            
             display: none;            
         }        
@@ -162,16 +213,11 @@
             height: 0; 
             border-left: 6px solid transparent;
             border-right: 6px solid transparent;
-            border-top: 6px solid rgb(185, 184, 184);
+            border-top: 6px solid var(--gray);
             margin:auto;
             margin-left: 6px;
         }
-        .top-nav-fondo{
-            width: 100%;
-            position: absolute;top:0;left: 0;
-            height: 60px;
-            background-image: linear-gradient(to bottom,black , rgba(0,0,0,0) 80%);     
-        }
+
         @media screen and (max-width: 576px) {
             .top-nav{
                 flex-direction: column;                
@@ -186,8 +232,8 @@
                 width: 100%;                
             }            
             .nav-collapse{
-                background-color: rgba(255, 255, 255, 0.7);
-                color: black;
+                background-color: var(--primary);
+                color: var(--text-color1);
                 max-height: 0px;
                 overflow: hidden;                
                 height: 100%;
@@ -199,6 +245,7 @@
             .dropdown-content{
                 position: relative !important;                
                 margin-left: 0px;            
+                background-color: var(--dark);
             }            
             .top-nav .dropdown  {
                 display: block;
@@ -215,9 +262,9 @@
         /* Fin Menu */
 
         .btn-prim{            
-            border: 1px solid white;
-            color: white;
-            background-color: black;
+            border: 1px solid var(--light);
+            color: var(--text-color1);
+            background-color: var(--primary);
             width: 10rem;
             padding: 1rem;
             margin:auto;            
@@ -227,9 +274,9 @@
         }
         .btn-prim-b{     /*no border, no back*/       
             border: none;
-            border-bottom: 1px solid white;
-            background: radial-gradient(rgba(222, 184, 135, 0.2), transparent);            
-            color: white;            
+            border-bottom: 1px solid var(--light);
+            background: radial-gradient(var(--dorado1), transparent);            
+            color: var(--text-color1);            
             width: 10rem;
             padding: 1rem;
             margin:auto;            
@@ -239,10 +286,10 @@
         }        
         .btn-prim a {
             text-decoration: none;
-            color: white;
+            color: var(--text-color1);
         }
         .btn-prim:hover, .btn-prim-b:hover{
-            text-shadow:   0 0 2px white;
+            text-shadow:   0 0 2px var(--light);
         }
         .contenedor-sub-a{
             text-align: center;
@@ -253,7 +300,7 @@
             justify-content: space-between;
             overflow: auto;
             padding: .1rem 0 ;
-            background: white;    
+            background-color: var(--light);
             transition: all .4s linear;
             height: 90px;
         }
@@ -262,7 +309,7 @@
             flex-wrap: wrap;
             overflow-y: scroll;
             padding: .1rem 0 ;
-            background: white;    
+            background-color: var(--light);
             transition: all .4s linear;
             height: 90px;
             max-height: 0;
@@ -271,17 +318,20 @@
         .cont-marca-img{
             flex:1 0 100px;
             padding: 8px;
-            border: 4px solid black;
-            background-color: white;            
+            border: 4px solid var(--primary);
+            background-color: var(--light);      
         }
         .cont-deporte-item{
             text-align: center; 
-            flex:1 1 40px;border:1px solid gray;background-color:rgba(0,0,0,.6);padding: 1rem;
+            flex:1 1 40px;
+            border:1px solid var(--gray-dark);
+            background-color:var(--primary);
+            padding: 1rem;
         }
         .cont-deporte-img-item{
             position: relative;
             padding: 0 0 5rem 0;
-            border: 2px solid white;
+            border: 2px solid var(--light);
             border-width: 4px 0;
         }
         
@@ -302,7 +352,7 @@
             flex:1 1 25%;
             min-width: 300px;
             position: relative;
-            border: 1px solid black;
+            border: 1px solid  var(--primary);
         }
         
         @media only screen and (min-width: 810px) and (max-width: 1210px){
@@ -320,12 +370,12 @@
             position:absolute;
             left:0;
             bottom:0%;
-            font-size: 1.2rem;
-            background-color:rgba(0,0,0,.6);
+            font-size: 1.2rem;            
+            background-color:var(--primary);
             width: 100%;
             text-align: center;
             line-height: 5rem;
-            color: white;                
+            color: var(--text-color1);                
         }
         .no-back{
             background: none;
@@ -335,8 +385,7 @@
             margin-top: -6px;        
             width: 100%;                
         }
-        header{
-            position: absolute;
+        header{            
             top:0;
             width: 100%;
         }
@@ -347,34 +396,40 @@
             font-size: .8rem;
         }
         .footer-inner{
-            background-color: rgb(20, 19, 19); 
-            color: rgb(212, 200, 200);
+            background-color: var(--primary); 
+            color: var(--light);
             padding: 1.6rem;
             line-height: 1.4rem;
         }
         .texto-cuadro-br{
             font-size:4rem;
             padding: 8px;
-            color: white;
-            border: 1px solid white;
-            text-shadow:0px 0px 4px      silver ;
-            box-shadow: 0px 0px 20px 0px white ;
+            color:  var(--text-color1);
+            border: 1px solid var(--white);
+            text-shadow:0px 0px 4px      var(--gray) ;
+            box-shadow: 0px 0px 20px 0px  var(--light) ;
             margin: 32px;
         }
         .efecto-hueco{        
             background:
-                linear-gradient(30deg, rgb(235, 73, 9) 0%, rgba(175, 134, 21, 1) 20%,
-                rgb(160, 108, 4) 50%, rgb(223, 166, 9) 72%, rgb(240, 232, 127) 100%);
+                linear-gradient(30deg,
+                    var(--efectoh1) 0%,
+                    var(--efectoh2) 20%,
+                    var(--efectoh3) 50%,
+                    var(--efectoh4) 72%,
+                    var(--efectoh5) 100%);
             color: transparent;                
             -moz-background-clip: text;
-            -webkit-background-clip: text;        
-        
+            -webkit-background-clip: text;         
         }
         .back-grad-color-a{
             background:
-                linear-gradient(30deg, rgb(235, 73, 9) 0%, rgba(175, 134, 21, 0.986) 21%,
-                rgba(105, 72, 5, 0.9) 46%, rgb(223, 166, 9) 72%, rgb(165, 96, 7) 100%);
-
+                linear-gradient(30deg,
+                    var(--efectog1) 0%,
+                    var(--efectog2) 21%,
+                    var(--efectog3) 46%,
+                    var(--efectog4) 72%,
+                    var(--efectog5) 100%);
         }
         .titulo-a{
             font-size: 4rem;
@@ -392,7 +447,7 @@
             font-weight: 600;       
             line-height: 4rem;
             text-align: center;
-            color: burlywood;
+            color: var(--text-color2);
         }        
         /*producto************************************/
         .producto-item {
@@ -400,9 +455,9 @@
             padding-bottom: 0;
             margin: 4px;
             overflow: hidden;
-            background-color: white;
+            background-color:  var(--light);
             position: relative;
-            color:black;
+            color:var(--primary);
             display: flex;
             flex-flow: column nowrap;
         }        
@@ -423,7 +478,6 @@
             width: 100%;
             max-height: 50vh;
             margin: auto;
-            xdisplay: block;
             object-fit: contain;
         }
         .producto-marca {
@@ -434,8 +488,7 @@
             height: 40px;
             width:40px;
             object-fit: scale-down;            
-        }
-        
+        }        
         .producto-precio{
             font-size: 1.1rem;
             font-weight: 500;
@@ -446,76 +499,73 @@
         /* transitions */
         .trans-to-left{
             transform: translateX(-100%);
-            opacity: 0;
-            
+            opacity: 0;            
         }
         .trans-to-zero{
             transform: translateX(0);
             opacity: 1;
             transition: .6s linear all;
         }
-        /*****************************************/
-
 
     </style>
 </head>
 <body >
-        
-    <div >
-        <div class="top-nav-fondo">
-        </div>
-        
-        <img src="./fondo.jpg" style="object-fit: cover;width: 100%;max-height: 500px;" alt="">
 
-        <header >
-            <nav class="top-nav">
-                <div class="top-brand">
-                    <div class="top-brand-texto">
-                        <span>Sports-X</span>                    
-                    </div>
-                </div>        
-                <a href="#" class="top-nav-icon" >
-                    &#9776;
-                </a>        
-                <div class="nav-collapse" >
-                    <ul>
-                        <li>
-                            <div class="dropdown">
-                                <button class="dropdown-btn">
-                                    <div class="dropdown-btn-inner" >
-                                        Hombre
-                                        <p class="triangle"></p>
-                                    </div>                            
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Calzado</a>
-                                    <a href="#">Indumentaria</a>
-                                    <a href="#">Accesorios</a>
-                                </div>
-                              </div> 
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <button class="dropdown-btn">
-                                    <div class="dropdown-btn-inner" >
-                                        Mujer
-                                        <p class="triangle"></p></div>                            
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Calzado</a>
-                                    <a href="#">Indumentaria</a>
-                                    <a href="#">Accesorios</a>                                </div>
-                                </div> 
-                        </li>
-                        <li>
-                            <button class="menu-btn">
-                                Contacto
-                            </button>
-                        </li>                
-                    </ul>
+    <header >
+        <nav class="top-nav">
+            <div class="top-brand">
+                <div class="top-brand-texto">
+                    <a href="#">
+                        Sports-X
+                    </a>                    
                 </div>
-            </nav>
-        </header>
+            </div>        
+            <a href="#" class="top-nav-icon" >
+                &#9776;
+            </a>        
+            <div class="nav-collapse" >
+                <ul>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropdown-btn">
+                                <div class="dropdown-btn-inner" >
+                                    Hombre
+                                    <p class="triangle"></p>
+                                </div>                            
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="#">Calzado</a>
+                                <a href="#">Indumentaria</a>
+                                <a href="#">Accesorios</a>
+                            </div>
+                            </div> 
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropdown-btn">
+                                <div class="dropdown-btn-inner" >
+                                    Mujer
+                                    <p class="triangle"></p></div>                            
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="#">Calzado</a>
+                                <a href="#">Indumentaria</a>
+                                <a href="#">Accesorios</a>                                </div>
+                            </div> 
+                    </li>
+                    <li>
+                        <button class="menu-btn">
+                            Contacto
+                        </button>
+                    </li>                
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+
+    <div>
+        <img src="./fondo.jpg" style="object-fit: cover;width: 100%;max-height: 500px;" alt="">
     </div>
 
     
@@ -713,6 +763,55 @@
                     </div>                                  
                 </div>
             </div>                                    
+            <div class="carouseld-item" data-id="4">                
+                <div class="producto-item">
+                    <div class="producto-pa">
+                        <a>
+                            <img src="./carouseld/rem5.png" alt="" class="producto-imagen">
+                        </a>              
+                        <hr>
+                    </div>  
+                    <div class="producto-pb">
+                        <img src="./reebok_LogosWEBSPG_85x53.png" class="producto-marca-img" alt="">
+                    </div>
+                    <div class="producto-pc">              
+                        <span class="producto-precio" >
+                            $ 6499,99
+                        </span>
+                        
+                    </div>
+                    <div class="producto-pd" >              
+                        <p class="producto-descr">                        
+                            Remera Puma Manchester City temporada 2020 entrenamiento                        
+                        </p>
+                    </div>                                  
+                </div>
+            </div>                                    
+            <div class="carouseld-item" data-id="4">                
+                <div class="producto-item">
+                    <div class="producto-pa">
+                        <a>
+                            <img src="./carouseld/rem6.png" alt="" class="producto-imagen">
+                        </a>              
+                        <hr>
+                    </div>  
+                    <div class="producto-pb">
+                        <img src="./reebok_LogosWEBSPG_85x53.png" class="producto-marca-img" alt="">
+                    </div>
+                    <div class="producto-pc">              
+                        <span class="producto-precio" >
+                            $ 6499,99
+                        </span>
+                        
+                    </div>
+                    <div class="producto-pd" >              
+                        <p class="producto-descr">                        
+                            Remera Puma Manchester City temporada 2020 entrenamiento                        
+                        </p>
+                    </div>                                  
+                </div>
+            </div>                                    
+
         </div>
     </div>
     
